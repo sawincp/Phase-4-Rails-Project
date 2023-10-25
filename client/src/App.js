@@ -13,14 +13,12 @@ function App() {
   }, []);
 
   return (
-    <BrowserRouter>
     <div className="App">
       <Routes>
         <Route path= '/' element={<h1>Page Count: {count}</h1>}/>
         <Route path='/testing' element={<h1>Test Route</h1>}/>
       </Routes>
     </div>
-    </BrowserRouter>
   );
 }
 
