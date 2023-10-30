@@ -7,6 +7,11 @@ class UsersController < ApplicationController
         render json: user, status: :created
     end
 
+    def show
+        user = @current_user
+        render json: user
+    end
+
     private
 
     def user_params
