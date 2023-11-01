@@ -1,9 +1,9 @@
 import React, {useState} from 'react'
 
 const SignUpForm = ({onLogin}) => {
-    const [username, setUsername] = useState('')
-    const [password, setPassword]= useState('')
-    const [imageURL, setImageURL]= useState('')
+    const [username, setUsername] = useState('test')
+    const [password, setPassword]= useState('test')
+    const [imageURL, setImageURL]= useState('test')
     const [errors, setErrors]= useState([])
     const [isLoading, setIsLoading]= useState(false)
 
@@ -34,7 +34,7 @@ const SignUpForm = ({onLogin}) => {
         <h3>Username</h3>
         <input
         type='text'
-        id= "username"
+        id= 'username'
         autoComplete='off'
         value={username}
         onChange={(e)=>setUsername(e.target.value)}
