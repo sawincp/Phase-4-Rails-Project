@@ -1,6 +1,8 @@
-import React, {useState} from 'react'
+import React, {useContext, useState} from 'react'
+import { CurrentUserContext } from './App'
 
 const SignUpForm = ({onLogin}) => {
+    const {setCurrentUser}= useContext(CurrentUserContext)
     const [username, setUsername] = useState('test')
     const [password, setPassword]= useState('test')
     const [imageURL, setImageURL]= useState('test')
@@ -21,7 +23,9 @@ const SignUpForm = ({onLogin}) => {
         }).then((r)=>{
             setIsLoading(false)
             if(r.ok){
-                r.json().then((user)=> onLogin(user))
+                r.json().then((user)=>{
+                    setCurrentUser(user)
+                })
             } else{
                 r.json().then((err)=> setErrors(err.errors))
             }
@@ -44,7 +48,6 @@ const SignUpForm = ({onLogin}) => {
         <input
         type="password"
         id="password"
-        autoComplete='current-password'
         value={password}
         onChange={(e)=>setPassword(e.target.value)}
         />

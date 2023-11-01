@@ -8,13 +8,12 @@ class UsersController < ApplicationController
     end
 
     def show
-        user = @current_user
-        render json: user
+        render json: @current_user
     end
 
     private
 
     def user_params
-        params.permit(:user, :username, :password, :image_url)
+        params.permit( :username, :password, :image_url)
     end
 end

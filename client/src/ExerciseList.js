@@ -1,13 +1,13 @@
 import React, {useContext} from 'react'
-import UserContext from './UserContext'
+import {CurrentUserContext} from './App'
 
 
 function ExerciseList() {
-    const user = useContext(UserContext)
+    const {currentUser} = useContext(CurrentUserContext)
   return (
     <div>
-        <h2>ExerciseList</h2>
-        {user}
+        <h2>Exercise List</h2>
+        <h3>Hello! {currentUser.username}</h3>
     </div>
   )
 }

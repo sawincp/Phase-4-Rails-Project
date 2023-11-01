@@ -1,12 +1,12 @@
-import React, {useState, useEffect } from "react"
-import { Routes, Route} from 'react-router-dom'
+import React, { useState, useEffect, createContext } from "react";
+import { Routes, Route } from 'react-router-dom';
 import Login from "./pages/Login";
-import UserContext from "./UserContext";
 import ExerciseList from "./ExerciseList";
 
+export const CurrentUserContext = createContext(null);
 
 function App() {
-  const [currentUser, setCurrentUser]= useState(null)
+  const [currentUser, setCurrentUser] = useState(null);
 
   useEffect(() => {
     // auto-login
@@ -17,16 +17,17 @@ function App() {
     });
   }, []);
 
-  if (!currentUser) return <Login onLogin={setCurrentUser} />
-
   return (
-    <Routes>
-      <UserContext.Provider value= "logged in user">
-      <Route exact path="/" element={<ExerciseList />}></Route>
-      </UserContext.Provider>
-    </Routes>
+    <CurrentUserContext.Provider value={{currentUser, setCurrentUser}}>
+      {currentUser ? (
+        <Routes>
+          <Route exact path="/" element={<ExerciseList />} />
+        </Routes>
+      ) : (
+        <Login  />
+      )}
+    </CurrentUserContext.Provider>
   );
 }
-
 
 export default App;
