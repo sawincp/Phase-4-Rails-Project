@@ -2,7 +2,7 @@ import { useState } from 'react'
 import LoginForm from '../LoginForm';
 import SignUpForm from '../SignUpForm';
 
-function Login({ onLogin }) {
+function Login() {
   const [showLogin, setShowLogin] = useState(true);
 
   return (
@@ -11,7 +11,7 @@ function Login({ onLogin }) {
       {showLogin ? (
         <>
         <h1>Log In</h1>
-        <LoginForm onLogin={onLogin} />
+        <LoginForm  />
         <hr></hr>
         <p>
           Don't have an account?
@@ -23,7 +23,7 @@ function Login({ onLogin }) {
       ) : (
         <>
         <h1>Sign Up!</h1>
-        <SignUpForm onLogin={onLogin}/>
+        <SignUpForm />
         <hr></hr>
         <p>
           Already have an account?

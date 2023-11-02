@@ -24,7 +24,7 @@ function App() {
           <Route exact path="/" element={<ExerciseList />} />
         </Routes>
       ) : (
-        <Login  />
+        <Login />
       )}
     </CurrentUserContext.Provider>
   );

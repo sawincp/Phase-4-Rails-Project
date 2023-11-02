@@ -1,7 +1,7 @@
 import React, {useContext, useState} from 'react'
 import { CurrentUserContext } from './App'
 
-function LoginForm({onLogin}) {
+function LoginForm() {
     const {setCurrentUser}= useContext(CurrentUserContext)
     const [username, setUsername] = useState('')
     const [password, setPassword] = useState('')
@@ -22,6 +22,9 @@ function LoginForm({onLogin}) {
             if(r.ok){
                 r.json().then((user)=>{
                     setCurrentUser(user)
+                    setUsername('')
+                    setPassword('')
+                    setErrors([])
                 }) 
             } else{
                 r.json().then((err)=> setErrors(err.errors))
